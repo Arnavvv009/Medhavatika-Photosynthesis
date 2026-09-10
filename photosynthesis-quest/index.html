@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photosynthesis Adventure — MedhaVatika</title>
+  <meta name="description" content="Photosynthesis Adventure by MedhaVatika — Explore interactive stages, simulations, storybook flipbook, and master the engine of life on Earth.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Dynamic Background -->
+  <div class="ambient-bg" aria-hidden="true"></div>
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="mv-header">
+    <div class="container mv-header-container">
+      <a href="#hero" class="mv-brand">
+        <div class="mv-brand-logo">🌿</div>
+        <div class="mv-brand-text">
+          <span class="mv-brand-title" data-i18n="nav_brand_title">MedhāVatika</span>
+          <span class="mv-brand-subtitle" data-i18n="nav_brand_subtitle">A Garden of Intellect</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="mv-nav">
+          <li><a href="#hero" class="mv-nav-link active" data-i18n="nav_home">Home</a></li>
+          <li><a href="#flipbook" class="mv-nav-link" data-i18n="nav_story">Medha's Story <span class="mv-nav-badge" data-i18n="badge_book">Book</span></a></li>
+          <li><a href="#ch1" class="mv-nav-link" data-i18n="nav_chlorophyll">Chlorophyll</a></li>
+          <li><a href="#ch2" class="mv-nav-link" data-i18n="nav_stomata">Stomata</a></li>
+          <li><a href="#ch3" class="mv-nav-link" data-i18n="nav_light_reactions">Light Reactions</a></li>
+          <li><a href="#ch4" class="mv-nav-link" data-i18n="nav_calvin">Calvin Cycle <span class="mv-nav-badge" data-i18n="badge_game">Game</span></a></li>
+          <li><a href="#ch5" class="mv-nav-link" data-i18n="nav_factors">Factors</a></li>
+          <li><a href="#applications" class="mv-nav-link" data-i18n="nav_applications">Applications</a></li>
+        </ul>
+      </nav>
+
+      <div class="mv-header-actions">
+        <div class="lang-selector">
+          <span>🌐</span>
+          <select id="lang-select" aria-label="Select Language">
+            <option value="en" selected>English</option>
+            <option value="hi">हिंदी (Hindi)</option>
+          </select>
+        </div>
+
+        <a href="tel:8007614867" class="btn-demo-call">
+          <span>📞</span>
+          <span data-i18n="btn_book_demo">Book A Demo</span>
+        </a>
+
+        <button class="mv-menu-toggle" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-wrapper">
+        <div class="hero-content">
+          <div class="hero-eyebrow-chip">
+            <span class="pulse-dot"></span>
+            <span data-i18n="hero_chip">MedhaLab™ · Life Science Interactive Quest</span>
+          </div>
+
+          <h1 class="hero-title" data-i18n="hero_title">
+            Photosynthesis <br>
+            <span class="gradient-text">Adventure</span>
+          </h1>
+
+          <p class="hero-description" data-i18n="hero_desc">
+            Step into an exciting biological journey where plant cells come alive and every photon tells a story! 
+            <strong>Photosynthesis Adventure</strong> by <em>MedhāVatika</em> transforms the powerhouse of life on Earth into an engaging, playful quest filled with hands-on lab simulations and interactive challenges.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#flipbook" class="btn-hero-primary">
+              <span data-i18n="hero_btn_story">📖 Open Interactive Storybook</span>
+              <span>→</span>
+            </a>
+            <a href="#ch1" class="btn-hero-secondary">
+              <span data-i18n="hero_btn_lab">🔬 Explore Lab Simulations</span>
+            </a>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="hero-stat-item">
+              <strong>5</strong>
+              <span data-i18n="stat_stages">Interactive Stages</span>
+            </div>
+            <div class="hero-stat-item">
+              <strong>6</strong>
+              <span data-i18n="stat_sims">Live Lab Simulations</span>
+            </div>
+            <div class="hero-stat-item">
+              <strong>100%</strong>
+              <span data-i18n="stat_mastery">Hands-On Mastery</span>
+            </div>
+            <div class="hero-stat-item">
+              <strong data-i18n="stat_grades">Grades 6–10</strong>
+              <span data-i18n="stat_curriculum">Curriculum Aligned</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-art-card">
+          <svg class="hero-art-svg" viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0c4a6e"/>
+                <stop offset="100%" stop-color="#0f172a"/>
+              </linearGradient>
+              <linearGradient id="sunGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="100%" stop-color="#f59e0b"/>
+              </linearGradient>
+              <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#34d399"/>
+                <stop offset="100%" stop-color="#059669"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="360" rx="16" fill="url(#skyGrad)"/>
+            <!-- Sun & Rays -->
+            <circle cx="430" cy="80" r="45" fill="url(#sunGrad)" opacity="0.9"/>
+            <circle cx="430" cy="80" r="65" fill="#fef08a" opacity="0.2"/>
+            <path d="M430,80 L350,180" stroke="#fef08a" stroke-width="2" stroke-dasharray="6,6" opacity="0.6"/>
+            <path d="M430,80 L300,240" stroke="#fef08a" stroke-width="2" stroke-dasharray="6,6" opacity="0.6"/>
+            <!-- Chloroplast Cellular Structure -->
+            <ellipse cx="260" cy="230" rx="200" ry="105" fill="#064e3b" stroke="#10b981" stroke-width="4" opacity="0.9"/>
+            <!-- Thylakoid Grana Discs -->
+            <g fill="#059669" stroke="#34d399" stroke-width="2">
+              <ellipse cx="160" cy="220" rx="35" ry="10"/><ellipse cx="160" cy="230" rx="35" ry="10"/><ellipse cx="160" cy="240" rx="35" ry="10"/>
+              <ellipse cx="260" cy="210" rx="40" ry="12"/><ellipse cx="260" cy="222" rx="40" ry="12"/><ellipse cx="260" cy="234" rx="40" ry="12"/><ellipse cx="260" cy="246" rx="40" ry="12"/>
+              <ellipse cx="360" cy="225" rx="35" ry="10"/><ellipse cx="360" cy="235" rx="35" ry="10"/>
+            </g>
+            <!-- Medha Character Silhouette & Owl Companion -->
+            <g transform="translate(60, 160)">
+              <!-- Owl -->
+              <ellipse cx="30" cy="50" rx="16" ry="20" fill="#78350f"/>
+              <circle cx="24" cy="44" r="5" fill="#fef08a"/><circle cx="24" cy="44" r="2" fill="#000"/>
+              <circle cx="36" cy="44" r="5" fill="#fef08a"/><circle cx="36" cy="44" r="2" fill="#000"/>
+              <polygon points="30,48 27,53 33,53" fill="#f59e0b"/>
+              <text id="hero-owl-label" x="30" y="80" font-family="Poppins, Noto Sans Devanagari" font-size="10" font-weight="700" fill="#fef08a" text-anchor="middle">Owl Guide</text>
+            </g>
+            <g transform="translate(100, 120)">
+              <!-- Medha -->
+              <ellipse cx="40" cy="50" rx="14" ry="16" fill="#fbcfe8"/>
+              <path d="M26,50 Q40,30 54,50" fill="#3b0764"/>
+              <path d="M24,66 L56,66 L62,130 L18,130 Z" fill="#dc2626"/>
+              <path d="M30,66 L50,66 L52,100 L28,100 Z" fill="#2563eb"/>
+              <!-- Magical Research Wand -->
+              <line x1="56" y1="80" x2="80" y2="50" stroke="#f59e0b" stroke-width="3"/>
+              <circle cx="82" cy="48" r="6" fill="#22d3ee"/>
+              <text id="hero-medha-label" x="40" y="145" font-family="Poppins, Noto Sans Devanagari" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">Medhā</text>
+            </g>
+            <!-- Floating Photons & Gas Molecules -->
+            <circle cx="380" cy="150" r="7" fill="#22d3ee"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/></circle>
+            <text x="380" y="153" font-size="8" fill="#000" font-weight="bold" text-anchor="middle">O₂</text>
+            <circle cx="180" cy="130" r="8" fill="#a855f7"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.4s" repeatCount="indefinite"/></circle>
+            <text x="180" y="133" font-size="8" fill="#fff" font-weight="bold" text-anchor="middle">CO₂</text>
+            <circle cx="290" cy="120" r="7" fill="#f59e0b"><animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/></circle>
+            <text x="290" y="123" font-size="7" fill="#000" font-weight="bold" text-anchor="middle">hν</text>
+          </svg>
+          <div class="hero-art-caption">
+            <span data-i18n="hero_art_zone">Exploration Zone: <b>Chloroplast Stroma &amp; Thylakoid Grana</b></span>
+            <span data-i18n="hero_art_status">Status: <b>Active Reaction ⚡</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FLIPBOOK STORYBOOK VIEWER ================= -->
+    <section class="flipbook-section" id="flipbook">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="section-gold-pill" data-i18n="fb_pill">✨ Interactive Flipbook Reader</span>
+          <h2 data-i18n="fb_heading">Medha's Photosynthesis Adventure</h2>
+          <p class="subtitle" data-i18n="fb_subtitle">Turn through 13 fully illustrated storybook pages with Medha and her wise Owl companion as they unravel the mystery of how sunlight transforms into energy.</p>
+        </div>
+
+        <div class="flipbook-container" id="flipbook-container">
+          <!-- Flipbook Toolbar (Zoom, Page input, Toc, Fullscreen) -->
+          <div class="flipbook-toolbar">
+            <div class="flipbook-toolbar-group">
+              <button class="fb-tool-btn" id="fb-first" title="First Page">|◀</button>
+              <button class="fb-tool-btn" id="fb-prev" title="Previous Page">◀</button>
+              <div class="fb-page-counter">
+                <span data-i18n="fb_page_label">Page</span>
+                <input type="number" id="fb-page-num" class="fb-page-input" value="1" min="1" max="13">
+                <span data-i18n="fb_of_pages">of 13</span>
+              </div>
+              <button class="fb-tool-btn" id="fb-next" title="Next Page">▶</button>
+              <button class="fb-tool-btn" id="fb-last" title="Last Page">▶|</button>
+            </div>
+
+            <div class="flipbook-toolbar-group">
+              <button class="fb-tool-btn" id="fb-toc-btn" title="Table of Contents">☰</button>
+              <button class="fb-tool-btn" id="fb-zoom-in" title="Zoom In">🔍+</button>
+              <button class="fb-tool-btn" id="fb-zoom-out" title="Zoom Out">🔍-</button>
+              <button class="fb-tool-btn" id="fb-fullscreen" title="Toggle Fullscreen">⛶</button>
+            </div>
+          </div>
+
+          <!-- Table of Contents Modal -->
+          <div class="toc-modal" id="toc-modal">
+            <h5 data-i18n="fb_toc_title">📑 Table of Contents</h5>
+            <ul class="toc-list">
+              <li class="toc-item" data-page="1"><span data-i18n="toc_1">Page 1: Cover &amp; Title</span> <b data-i18n="toc_b1">Cover</b></li>
+              <li class="toc-item" data-page="2"><span data-i18n="toc_2">Page 2: Prologue — The Green Leaf</span> <b data-i18n="toc_b2">Ch. 0</b></li>
+              <li class="toc-item" data-page="3"><span data-i18n="toc_3">Page 3: Inside the Chloroplast</span> <b data-i18n="toc_b3">Ch. 1</b></li>
+              <li class="toc-item" data-page="4"><span data-i18n="toc_4">Page 4: The Solar Spectrum Trap</span> <b data-i18n="toc_b4">Ch. 1</b></li>
+              <li class="toc-item" data-page="5"><span data-i18n="toc_5">Page 5: Stomata &amp; Guard Cells</span> <b data-i18n="toc_b5">Ch. 2</b></li>
+              <li class="toc-item" data-page="6"><span data-i18n="toc_6">Page 6: Splitting Water (Photolysis)</span> <b data-i18n="toc_b6">Ch. 3</b></li>
+              <li class="toc-item" data-page="7"><span data-i18n="toc_7">Page 7: The Electron Highway (ETC)</span> <b data-i18n="toc_b7">Ch. 3</b></li>
+              <li class="toc-item" data-page="8"><span data-i18n="toc_8">Page 8: ATP Synthase Turbine</span> <b data-i18n="toc_b8">Ch. 3</b></li>
+              <li class="toc-item" data-page="9"><span data-i18n="toc_9">Page 9: The Calvin Cycle Wheel</span> <b data-i18n="toc_b9">Ch. 4</b></li>
+              <li class="toc-item" data-page="10"><span data-i18n="toc_10">Page 10: Building Glucose (C₆H₁₂O₆)</span> <b data-i18n="toc_b10">Ch. 4</b></li>
+              <li class="toc-item" data-page="11"><span data-i18n="toc_11">Page 11: Limiting Factor Bottlenecks</span> <b data-i18n="toc_b11">Ch. 5</b></li>
+              <li class="toc-item" data-page="12"><span data-i18n="toc_12">Page 12: Earth &amp; Space Ecology</span> <b data-i18n="toc_b12">Apps</b></li>
+              <li class="toc-item" data-page="13"><span data-i18n="toc_13">Page 13: Quest Mastery Certificate</span> <b data-i18n="toc_b13">End</b></li>
+            </ul>
+          </div>
+
+          <!-- Flipbook Dual Page Viewport -->
+          <div class="flipbook-stage">
+            <div class="flipbook-sheet-wrapper" id="flipbook-sheet">
+              <!-- Left Page -->
+              <div class="fb-page left" id="fb-page-left">
+                <!-- Dynamically populated by JS Flipbook Engine -->
+              </div>
+
+              <!-- Right Page -->
+              <div class="fb-page right" id="fb-page-right">
+                <!-- Dynamically populated by JS Flipbook Engine -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 1 ================= -->
+    <section class="quest-chapter" id="ch1">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-badge-ribbon" data-i18n="ch1_ribbon">Stage 1 · Light Absorption &amp; Spectrum</span>
+          <h2 class="chapter-title" data-i18n="ch1_title">Catching Sunlight with Chlorophyll</h2>
+          <p class="chapter-subtitle" data-i18n="ch1_subtitle">Plants do not absorb all colours of sunlight equally. Chlorophyll molecules act as tuned biological antennas, capturing high-energy blue and red light while reflecting green light back to our eyes.</p>
+        </div>
+
+        <div class="chapter-two-col">
+          <!-- Theory & Solved Math -->
+          <div class="theory-book-card">
+            <h3 data-i18n="ch1_theory_title">Photon Absorption &amp; Pigment Physics</h3>
+            <p data-i18n="ch1_theory_p">Sunlight is a spectrum of electromagnetic waves ranging from violet (380 nm) to deep red (750 nm). Chlorophyll pigments embedded in the thylakoid membrane have precise quantum energy gaps.</p>
+            
+            <div class="formula-callout-box" data-i18n="ch1_formula_box">
+              Photon Energy: E = (h · c) / λ<br>
+              <small>h = 6.626×10⁻³⁴ J·s, c = 3×10⁸ m/s, λ = wavelength</small>
+            </div>
+
+            <ul data-i18n="ch1_theory_list">
+              <li><strong>Chlorophyll a:</strong> Primary reaction-center pigment; absorption peaks at <strong>430 nm (Blue)</strong> and <strong>660 nm (Red)</strong>.</li>
+              <li><strong>Chlorophyll b:</strong> Accessory antenna pigment; peaks at <strong>450 nm (Blue)</strong> and <strong>640 nm (Orange-Red)</strong>.</li>
+              <li><strong>The "Green Window":</strong> Light around 500–550 nm has very low absorption; it is reflected, making vegetation look green.</li>
+            </ul>
+
+            <div class="solved-exercise-card">
+              <div class="solved-exercise-title" data-i18n="ch1_exercise_title">Solved Exercise 1.1 — Photon Energy Comparison</div>
+              <div class="solved-exercise-step" data-i18n="ch1_exercise_step">
+                <b>Problem:</b> Compare the photon energy of Blue light (450 nm) vs Red light (680 nm).<br>
+                <b>Solution:</b><br>
+                E_blue = (6.63×10⁻³⁴ · 3×10⁸) / (450×10⁻⁹) ≈ <b>4.42 × 10⁻¹⁹ J (2.76 eV)</b><br>
+                E_red = (6.63×10⁻³⁴ · 3×10⁸) / (680×10⁻⁹) ≈ <b>2.92 × 10⁻¹⁹ J (1.82 eV)</b><br>
+                <i>Result: Blue photons pack ~50% more energy per photon to excite chlorophyll electrons!</i>
+              </div>
+            </div>
+
+            <div class="story-dialogue-chip">
+              <div class="avatar">🦉</div>
+              <p data-i18n="ch1_tip"><strong>Owl's Lab Tip:</strong> "Notice how the chlorophyll molecules never waste a single blue or red photon — each one kicks an electron into a higher orbital!"</p>
+            </div>
+          </div>
+
+          <!-- Interactive Spectrum Simulator -->
+          <div class="interactive-lab-card">
+            <div class="lab-header">
+              <div class="lab-status-badge">
+                <span class="live-dot"></span>
+                <span data-i18n="ch1_lab_status">Live Spectrum Simulation</span>
+              </div>
+            </div>
+
+            <h4 class="lab-title" data-i18n="ch1_lab_title">Chlorophyll Absorption Spectrum Explorer</h4>
+            <p class="lab-description" data-i18n="ch1_lab_desc">Drag the wavelength slider across the visible spectrum (380–720 nm) to observe real-time photon absorption curves and leaf reflectance.</p>
+
+            <div class="sim-stage-viewport">
+              <canvas id="spectrum-canvas" style="width: 100%; height: 200px;"></canvas>
+            </div>
+
+            <div class="lab-controls-container">
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch1_slider_label">Wavelength (λ)</span>
+                  <b id="spectrum-colorname">Blue · 450 nm</b>
+                </div>
+                <input type="range" id="spectrum-slider" class="mv-range-slider" min="380" max="720" value="450" step="1">
+              </div>
+            </div>
+
+            <div class="metrics-matrix">
+              <div class="metric-card">
+                <div class="metric-val" id="spectrum-absorb">92%</div>
+                <div class="metric-label" data-i18n="ch1_metric_absorb">Absorption</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="spectrum-reflect">8%</div>
+                <div class="metric-label" data-i18n="ch1_metric_reflect">Reflectance</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="spectrum-photon-e">2.76 eV</div>
+                <div class="metric-label" data-i18n="ch1_metric_energy">Photon Energy</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" style="display:flex; justify-content:center; align-items:center; height:24px;">
+                  <span id="spectrum-leafcolor" style="width:24px; height:24px; border-radius:6px; background:#1e3a8a; display:inline-block; border:1px solid #fff;"></span>
+                </div>
+                <div class="metric-label" data-i18n="ch1_metric_color">Light Color</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 2 ================= -->
+    <section class="quest-chapter" id="ch2">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-badge-ribbon" data-i18n="ch2_ribbon">Stage 2 · Gas Exchange &amp; Diffusion</span>
+          <h2 class="chapter-title" data-i18n="ch2_title">Breathing Through Stomata Valves</h2>
+          <p class="chapter-subtitle" data-i18n="ch2_subtitle">Before sunlight can build sugar, the leaf needs raw carbon. Microscopic pores called stomata act as dynamic gates — balancing carbon dioxide intake against precious water loss.</p>
+        </div>
+
+        <div class="chapter-two-col reverse">
+          <!-- Interactive Stomata Lab -->
+          <div class="interactive-lab-card">
+            <div class="lab-header">
+              <div class="lab-status-badge">
+                <span class="live-dot"></span>
+                <span data-i18n="ch2_lab_status">Guard Cell Simulator</span>
+              </div>
+            </div>
+
+            <h4 class="lab-title" data-i18n="ch2_lab_title">Stomata Gas-Exchange &amp; Turgor Lab</h4>
+            <p class="lab-description" data-i18n="ch2_lab_desc">Adjust environmental sunlight and humidity to watch kidney-shaped guard cells swell with water pressure, opening the pore for gas diffusion.</p>
+
+            <div class="sim-stage-viewport">
+              <svg id="stomata-svg" viewBox="0 0 340 210" style="width: 100%; height: 200px;">
+                <rect width="340" height="210" fill="#090e1a" rx="10"/>
+                <!-- Surrounding Epidermal Cells (Wide Dark Emerald Lobes) -->
+                <ellipse cx="30" cy="105" rx="60" ry="74" fill="#043828" opacity="0.85"/>
+                <ellipse cx="310" cy="105" rx="60" ry="74" fill="#043828" opacity="0.85"/>
+                <!-- Extra Wide Crescent Guard Cells -->
+                <path id="guard-cell-left" d="M132,46 Q80,105 132,164 Q118,105 132,46 Z" fill="#10b981" stroke="#34d399" stroke-width="2.5"/>
+                <path id="guard-cell-right" d="M208,46 Q260,105 208,164 Q222,105 208,46 Z" fill="#10b981" stroke="#34d399" stroke-width="2.5"/>
+                <!-- Extra Wide Stomatal Aperture Pore (Glowing Cyan Outline) -->
+                <ellipse id="stomata-pore-shape" cx="170" cy="105" rx="32" ry="52" fill="#020617" stroke="#22d3ee" stroke-width="3"/>
+                <g id="stomata-gas-particles"></g>
+              </svg>
+            </div>
+
+            <div class="lab-controls-container">
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch2_slider_light">☀️ Light Intensity</span>
+                  <b id="stomata-light-val">75%</b>
+                </div>
+                <input type="range" id="stomata-light" class="mv-range-slider" min="0" max="100" value="75">
+              </div>
+
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch2_slider_humidity">💧 Ambient Humidity</span>
+                  <b id="stomata-humidity-val">65%</b>
+                </div>
+                <input type="range" id="stomata-humidity" class="mv-range-slider" min="0" max="100" value="65">
+              </div>
+            </div>
+
+            <div class="metrics-matrix">
+              <div class="metric-card">
+                <div class="metric-val" id="stomata-state">11.4 μm (Open)</div>
+                <div class="metric-label" data-i18n="ch2_metric_radius">Pore Radius (r)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="stomata-co2">4.6 μmol/m²·s</div>
+                <div class="metric-label" data-i18n="ch2_metric_flux">Fick's CO₂ Flux (J)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="stomata-transpiration">1.8 mmol/m²·s</div>
+                <div class="metric-label" data-i18n="ch2_metric_transp">H₂O Transpiration (E)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="stomata-wue">390 : 1</div>
+                <div class="metric-label" data-i18n="ch2_metric_ratio">Loss Ratio (H₂O : CO₂)</div>
+              </div>
+            </div>
+
+            <!-- Dynamic Biological Feedback Strip -->
+            <div id="stomata-diagnostic-box" style="margin-top:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:10px 14px; font-size:0.82rem; color:#cbd5e1; line-height:1.5;">
+              <b style="color:#f59e0b;" data-i18n="ch2_diagnostic_label">🔬 Osmotic State:</b> <span id="stomata-bio-status">Sunlight active · K⁺ pumps inflate guard cells · Stomata open for CO₂ influx</span>
+            </div>
+          </div>
+
+          <!-- Theory & Solved Math -->
+          <div class="theory-book-card">
+            <h3 data-i18n="ch2_theory_title">Guard Cell Mechanics &amp; Fick's Law</h3>
+            <p data-i18n="ch2_theory_p">Guard cells regulate gas exchange through osmotic turgor pressure. In sunlight, active transport pumps potassium ions ($K^+$) into guard cells, causing water to rush in by osmosis and buckle the cells open.</p>
+
+            <div class="formula-callout-box" data-i18n="ch2_formula_box">
+              Fick's Diffusion Flux: J = -D · (ΔC / Δx)<br>
+              <small>D = diffusion coefficient, ΔC = concentration gradient, Δx = stomatal depth</small>
+            </div>
+
+            <ul data-i18n="ch2_theory_list">
+              <li><strong>CO₂ Influx:</strong> Atmospheric CO₂ (~420 ppm) diffuses down its gradient into the substomatal cavity for the Calvin cycle.</li>
+              <li><strong>Transpiration Cost:</strong> For every 1 molecule of CO₂ gained, a plant typically loses up to 400 molecules of H₂O vapour.</li>
+              <li><strong>Drought Protection:</strong> When humidity drops or roots detect water deficit, the plant hormone Abscisic Acid (ABA) rapidly closes stomata to prevent dehydration.</li>
+            </ul>
+
+            <div class="solved-exercise-card">
+              <div class="solved-exercise-title" data-i18n="ch2_exercise_title">Solved Exercise 2.1 — Diffusion Rate vs Aperture</div>
+              <div class="solved-exercise-step" data-i18n="ch2_exercise_step">
+                <b>Problem:</b> If guard cells reduce stomatal pore radius from 12 μm to 4 μm in dry wind, by what factor does the pore area and gas conductance drop?<br>
+                <b>Solution:</b><br>
+                Area Ratio = (π · 4²) / (π · 12²) = 16 / 144 = <b>1/9 ≈ 11.1%</b><br>
+                <i>Result: Stomatal resistance increases by ~900%, dramatically curtailing transpiration during heatwaves!</i>
+              </div>
+            </div>
+
+            <div class="story-dialogue-chip">
+              <div class="avatar">👧</div>
+              <p data-i18n="ch2_observation"><strong>Medhā's Observation:</strong> "The leaf is constantly making a trade-off: open wide for carbon food, or close tight to save water!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 3 ================= -->
+    <section class="quest-chapter" id="ch3">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-badge-ribbon" data-i18n="ch3_ribbon">Stage 3 · Light Reactions &amp; Z-Scheme</span>
+          <h2 class="chapter-title" data-i18n="ch3_title">The Light-Dependent Reactions &amp; ETC</h2>
+          <p class="chapter-subtitle" data-i18n="ch3_subtitle">Inside the thylakoid membrane, light energy splits water molecules apart, pushing electrons down an Electron Transport Chain (ETC) to create cellular fuel: ATP and NADPH.</p>
+        </div>
+
+        <div class="chapter-two-col">
+          <!-- Theory & Solved Math -->
+          <div class="theory-book-card">
+            <h3 data-i18n="ch3_theory_title">Photolysis, Electron Flow &amp; Chemiosmosis</h3>
+            <p data-i18n="ch3_theory_p">Photons strike Photosystem II (P680), extracting high-energy electrons by splitting water molecules in a reaction called photolysis. The electrons cascade down protein complexes to Photosystem I (P700) and ultimately reduce NADP⁺ into NADPH.</p>
+
+            <div class="formula-callout-box" data-i18n="ch3_formula_box">
+              Water Splitting: 2 H₂O → 4 H⁺ + 4 e⁻ + O₂ ↑<br>
+              Yield: 2 H₂O + 2 NADP⁺ + 3 ADP + 3 P_i → O₂ + 2 NADPH + 3 ATP
+            </div>
+
+            <ul data-i18n="ch3_theory_list">
+              <li><strong>Photosystem II (PSII):</strong> Absorbs 680 nm light; oxidizes water and pumps protons ($H^+$) into the thylakoid lumen.</li>
+              <li><strong>Cytochrome b₆f:</strong> Bridges the electron flow while amplifying the electrochemical proton gradient ($\Delta\text{pH}$).</li>
+              <li><strong>ATP Synthase Turbine:</strong> Protons stream back through this rotary motor into the stroma, generating ATP from ADP and inorganic phosphate.</li>
+            </ul>
+
+            <div class="solved-exercise-card">
+              <div class="solved-exercise-title" data-i18n="ch3_exercise_title">Solved Exercise 3.1 — ATP &amp; NADPH Energy Yield</div>
+              <div class="solved-exercise-step" data-i18n="ch3_exercise_step">
+                <b>Problem:</b> How many water molecules must be split to produce the 18 ATP and 12 NADPH needed to synthesize 1 molecule of glucose (C₆H₁₂O₆)?<br>
+                <b>Solution:</b><br>
+                Each H₂O yields 2 e⁻. Building 12 NADPH requires 24 e⁻.<br>
+                Total Water = 24 e⁻ / 2 = <b>12 H₂O molecules</b>.<br>
+                By-product released = <b>6 O₂ molecules</b>.<br>
+                <i>Result: Exactly 6 diatomic oxygen molecules are released into the air for every glucose made!</i>
+              </div>
+            </div>
+
+            <div class="story-dialogue-chip">
+              <div class="avatar">🦉</div>
+              <p data-i18n="ch3_wisdom"><strong>Owl's Wisdom:</strong> "Every breath of oxygen you take right now was created when PSII split a water molecule inside a plant cell!"</p>
+            </div>
+          </div>
+
+          <!-- Interactive Light Reaction & 100% Sync Bar Lab -->
+          <div class="interactive-lab-card">
+            <div class="lab-header">
+              <div class="lab-status-badge">
+                <span class="live-dot"></span>
+                <span data-i18n="ch3_lab_status">Z-Scheme Membrane Runner</span>
+              </div>
+            </div>
+
+            <h4 class="lab-title" data-i18n="ch3_lab_title">Thylakoid Membrane &amp; Chemiosmosis Visualizer</h4>
+            <p class="lab-description" data-i18n="ch3_lab_desc">Run the electron transport chain, track proton accumulation in the lumen, and observe real-time conservation of photon energy.</p>
+
+            <!-- 100% Sync Bar -->
+            <div class="sync-bar-wrapper">
+              <span class="sync-bar-label" data-i18n="ch3_sync_label">Energy Conservation:</span>
+              <div class="sync-bar-track">
+                <div id="sync-bar-photon" class="sync-bar-fill-cyan" style="width: 58%;" title="Proton Gradient Potential"></div>
+                <div id="sync-bar-chem" class="sync-bar-fill-purple" style="width: 42%;" title="ATP & NADPH Chemical Bonds"></div>
+              </div>
+              <span class="sync-bar-percentage" id="sync-bar-text" data-i18n="ch3_sync_text">100% Conserved</span>
+            </div>
+
+            <div class="sim-stage-viewport">
+              <canvas id="etc-canvas" style="width: 100%; height: 210px;"></canvas>
+            </div>
+
+            <div class="lab-btn-toolbar">
+              <button class="lab-btn primary" id="etc-play-btn" data-i18n="ch3_btn_run">▶ Run Reaction</button>
+              <button class="lab-btn" id="etc-reset-btn" data-i18n="ch3_btn_reset">↺ Reset</button>
+              <div style="margin-left: auto; display:flex; align-items:center; gap:6px; font-size:0.8rem; color:#94a3b8;">
+                <span data-i18n="ch3_label_speed">Speed:</span>
+                <select id="etc-speed-select" style="background:#0f172a; border:1px solid #334155; color:#fff; padding:3px 6px; border-radius:4px;">
+                  <option value="0.5">0.5×</option>
+                  <option value="1" selected>1.0×</option>
+                  <option value="2">2.0×</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="metrics-matrix">
+              <div class="metric-card">
+                <div class="metric-val" id="etc-atp-val">0</div>
+                <div class="metric-label" data-i18n="ch3_metric_atp">ATP Synthesized</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="etc-nadph-val">0</div>
+                <div class="metric-label" data-i18n="ch3_metric_nadph">NADPH Formed</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="etc-o2-val">0</div>
+                <div class="metric-label" data-i18n="ch3_metric_o2">O₂ Released</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="etc-ph-val">ΔpH 3.2</div>
+                <div class="metric-label" data-i18n="ch3_metric_grad">Proton Gradient</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 4 ================= -->
+    <section class="quest-chapter" id="ch4">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-badge-ribbon" data-i18n="ch4_ribbon">Stage 4 · Calvin Cycle &amp; Sugar Synthesis</span>
+          <h2 class="chapter-title" data-i18n="ch4_title">The Calvin Cycle: Build-a-Sugar Challenge</h2>
+          <p class="chapter-subtitle" data-i18n="ch4_subtitle">Using the ATP and NADPH fuel generated in the light reactions, the stroma's master enzyme — <strong>RuBisCO</strong> — captures CO₂ and turns it into organic sugar.</p>
+        </div>
+
+        <div class="chapter-two-col reverse">
+          <!-- Interactive Challenge -->
+          <div class="interactive-lab-card">
+            <!-- Challenge Header Bar -->
+            <div class="challenge-header-bar">
+              <div class="challenge-title-badge">
+                <span data-i18n="ch4_badge_title">🎯 Sugar Shaper Challenge</span>
+              </div>
+              <div class="target-select-wrapper">
+                <select id="calvin-target-select" aria-label="Select Target Molecule">
+                  <option value="glucose">Target: 1 Glucose (C₆H₁₂O₆)</option>
+                  <option value="g3p">Target: 2 G3P (C₃H₇O₆P)</option>
+                  <option value="sucrose">Target: 1 Sucrose (C₁₂H₂₂O₁₁)</option>
+                  <option value="starch">Target: Starch Polymer (3× Glucose)</option>
+                </select>
+              </div>
+            </div>
+
+            <h4 class="lab-title" data-i18n="ch4_lab_title">Calvin Cycle Parameter Transformer</h4>
+            <p class="lab-description" data-i18n="ch4_lab_desc">Tune the 4 metabolic sliders ($A, B, \varphi, D$) to match the target molecule's stoichiometric requirement with minimal error!</p>
+
+            <div class="sim-stage-viewport">
+              <canvas id="calvin-wave-canvas" style="width: 100%; height: 190px;"></canvas>
+            </div>
+
+            <!-- 4 Precision Sliders -->
+            <div class="lab-controls-container">
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch4_slider_a">Carbon Fixation Influx (A: CO₂ Moles)</span>
+                  <b id="calvin-a-val">6 mol</b>
+                </div>
+                <input type="range" id="calvin-a-slider" class="mv-range-slider" min="1" max="18" value="6" step="1">
+              </div>
+
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch4_slider_b">RuBisCO Catalytic Efficiency (B: Rate)</span>
+                  <b id="calvin-b-val">1.0×</b>
+                </div>
+                <input type="range" id="calvin-b-slider" class="mv-range-slider" min="0.2" max="3.0" value="1.0" step="0.1">
+              </div>
+
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch4_slider_phi">ATP / NADPH Power Input (φ: Energy)</span>
+                  <b id="calvin-phi-val">18 ATP</b>
+                </div>
+                <input type="range" id="calvin-phi-slider" class="mv-range-slider" min="3" max="54" value="18" step="1">
+              </div>
+
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch4_slider_d">Stroma Temperature Shift (D: Offset)</span>
+                  <b id="calvin-d-val">25°C</b>
+                </div>
+                <input type="range" id="calvin-d-slider" class="mv-range-slider" min="10" max="45" value="25" step="1">
+              </div>
+            </div>
+
+            <!-- Challenge Evaluation Scoreboard -->
+            <div class="challenge-score-board">
+              <div class="score-metric">
+                <span data-i18n="ch4_score_error">Avg Error |Δmoles|</span>
+                <b id="calvin-error-score">0.00</b>
+              </div>
+              <div class="score-metric">
+                <span data-i18n="ch4_score_yield">Carbon Yield</span>
+                <b id="calvin-yield-score">100%</b>
+              </div>
+              <div class="score-status-badge perfect" id="calvin-status-badge">
+                ⭐ Perfect Match!
+              </div>
+            </div>
+
+            <div class="lab-btn-toolbar">
+              <button class="lab-btn" id="calvin-random-btn" data-i18n="ch4_btn_random">🎲 Random Challenge</button>
+              <button class="lab-btn" id="calvin-reset-btn" data-i18n="ch4_btn_reset">↺ Reset Ideal</button>
+            </div>
+          </div>
+
+          <!-- Theory & Solved Math -->
+          <div class="theory-book-card">
+            <h3 data-i18n="ch4_theory_title">Three Phases of the Calvin Cycle</h3>
+            <p data-i18n="ch4_theory_p">Named after Melvin Calvin, this light-independent cycle operates in the stroma using 3 distinct enzymatic phases.</p>
+
+            <div class="formula-callout-box" data-i18n="ch4_formula_box">
+              Phase 1: 3 RuBP (5C) + 3 CO₂ (1C) → 6 3-PGA (3C)<br>
+              Phase 2: 6 3-PGA + 6 ATP + 6 NADPH → 6 G3P (3C)<br>
+              Phase 3: 5 G3P + 3 ATP → 3 RuBP regenerated (+ 1 G3P net output)
+            </div>
+
+            <ul data-i18n="ch4_theory_list">
+              <li><strong>Carbon Fixation:</strong> The enzyme RuBisCO attaches CO₂ onto ribulose-1,5-bisphosphate (RuBP), yielding 3-phosphoglycerate.</li>
+              <li><strong>Reduction:</strong> ATP adds energy and NADPH donates electrons to form Glyceraldehyde-3-Phosphate (G3P).</li>
+              <li><strong>Regeneration:</strong> 5 G3P molecules are rearranged back into 3 RuBP so the cycle can continue forever.</li>
+            </ul>
+
+            <div class="solved-exercise-card">
+              <div class="solved-exercise-title" data-i18n="ch4_exercise_title">Solved Exercise 4.1 — Building 1 Glucose Molecule</div>
+              <div class="solved-exercise-step" data-i18n="ch4_exercise_step">
+                <b>Problem:</b> Since 1 net G3P (3C) leaves the cycle every 3 turns, how many turns of the cycle are needed to synthesize 1 Glucose (6C)?<br>
+                <b>Solution:</b><br>
+                Glucose = 2 × G3P = 2 × (3 turns) = <b>6 full turns</b>.<br>
+                Total ATP consumed = 6 × 3 = <b>18 ATP</b>.<br>
+                Total NADPH consumed = 6 × 2 = <b>12 NADPH</b>.<br>
+                <i>Result: Exactly 6 CO₂ + 18 ATP + 12 NADPH = 1 C₆H₁₂O₆ (Glucose)!</i>
+              </div>
+            </div>
+
+            <div class="story-dialogue-chip">
+              <div class="avatar">👧</div>
+              <p data-i18n="ch4_discovery"><strong>Medhā's Discovery:</strong> "RuBisCO is the most abundant protein on planet Earth — every carbohydrate we eat was touched by this enzyme!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHAPTER 5 ================= -->
+    <section class="quest-chapter" id="ch5">
+      <div class="container">
+        <div class="chapter-header">
+          <span class="chapter-badge-ribbon" data-i18n="ch5_ribbon">Stage 5 · Blackman's Law of Limiting Factors</span>
+          <h2 class="chapter-title" data-i18n="ch5_title">Environmental Bottlenecks &amp; Rate Factors</h2>
+          <p class="chapter-subtitle" data-i18n="ch5_subtitle">Photosynthesis does not operate in a vacuum. Under <strong>Blackman's Law</strong>, the overall reaction speed is strictly determined by whichever essential factor is in shortest supply.</p>
+        </div>
+
+        <div class="chapter-two-col">
+          <!-- Theory & Solved Math -->
+          <div class="theory-book-card">
+            <h3 data-i18n="ch5_theory_title">The Principle of Limiting Factors</h3>
+            <p data-i18n="ch5_theory_p">F.F. Blackman (1905) established that when a process depends on multiple independent factors, its pace is constrained by the factor closest to its minimum value.</p>
+
+            <div class="formula-callout-box" data-i18n="ch5_formula_box">
+              Photosynthetic Rate R = min(f(Light), g(CO₂), h(Temp))
+            </div>
+
+            <ul data-i18n="ch5_theory_list">
+              <li><strong>Light Intensity:</strong> Drives photolysis &amp; ATP synthesis. Reaches a plateau when pigments are saturated (~2000 μmol/m²/s).</li>
+              <li><strong>CO₂ Concentration:</strong> Determines the carboxylation rate of RuBisCO. Current ambient CO₂ (~0.04%) is usually a limiting bottleneck.</li>
+              <li><strong>Temperature:</strong> Governs enzyme kinetics. Rate doubles every 10°C (Q₁₀ ≈ 2) until the thermal optimum (~30–35°C), after which RuBisCO denatures.</li>
+            </ul>
+
+            <div class="solved-exercise-card">
+              <div class="solved-exercise-title" data-i18n="ch5_exercise_title">Solved Exercise 5.1 — Greenhouse CO₂ Enrichment</div>
+              <div class="solved-exercise-step" data-i18n="ch5_exercise_step">
+                <b>Problem:</b> Commercial greenhouse growers increase indoor CO₂ from 400 ppm to 1200 ppm in full sunlight at 26°C. How much does crop yield increase?<br>
+                <b>Solution:</b><br>
+                Eliminating CO₂ as the limiting factor increases RuBisCO carboxylation efficiency and suppresses photorespiration.<br>
+                <i>Result: Yield increases by <b>35% to 50%</b> with accelerated harvesting cycles!</i>
+              </div>
+            </div>
+
+            <div class="story-dialogue-chip">
+              <div class="avatar">🦉</div>
+              <p data-i18n="ch5_diagnostic"><strong>Owl's Diagnostic:</strong> "If a plant has blinding sunshine and warmth but no CO₂, cranking up the light does zero good — you must fix the bottleneck first!"</p>
+            </div>
+          </div>
+
+          <!-- Interactive Limiting Factors Lab -->
+          <div class="interactive-lab-card">
+            <div class="lab-header">
+              <div class="lab-status-badge">
+                <span class="live-dot"></span>
+                <span data-i18n="ch5_lab_status">Multi-Factor Rate Analyzer</span>
+              </div>
+            </div>
+
+            <h4 class="lab-title" data-i18n="ch5_lab_title">Blackman Limiting Factors Explorer</h4>
+            <p class="lab-description" data-i18n="ch5_lab_desc">Manipulate Light, CO₂, and Temperature sliders to reveal the active bottleneck and visualize the multi-variable saturation curve.</p>
+
+            <div class="sim-stage-viewport">
+              <canvas id="factor-canvas" style="width: 100%; height: 200px;"></canvas>
+            </div>
+
+            <div class="lab-controls-container">
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch5_slider_light">☀️ Light Intensity</span>
+                  <b id="factor-light-val">70%</b>
+                </div>
+                <input type="range" id="factor-light" class="mv-range-slider" min="0" max="100" value="70">
+              </div>
+
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch5_slider_co2">💨 CO₂ Concentration</span>
+                  <b id="factor-co2-val">45%</b>
+                </div>
+                <input type="range" id="factor-co2" class="mv-range-slider" min="0" max="100" value="45">
+              </div>
+
+              <div class="control-field">
+                <div class="control-field-header">
+                  <span data-i18n="ch5_slider_temp">🌡️ Stroma Temperature</span>
+                  <b id="factor-temp-val">26°C</b>
+                </div>
+                <input type="range" id="factor-temp" class="mv-range-slider" min="5" max="50" value="26">
+              </div>
+            </div>
+
+            <div class="metrics-matrix">
+              <div class="metric-card">
+                <div class="metric-val" id="factor-rate">68%</div>
+                <div class="metric-label" data-i18n="ch5_metric_rate">Overall Rate</div>
+              </div>
+              <div class="metric-card" style="grid-column: span 2;">
+                <div class="metric-val" id="factor-limiter" style="font-size:0.95rem; color:#f87171;">CO₂ Concentration</div>
+                <div class="metric-label" data-i18n="ch5_metric_limiter">Current Limiting Bottleneck</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" id="factor-efficiency">Optimal</div>
+                <div class="metric-label" data-i18n="ch5_metric_thermal">Thermal State</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MASTER BALANCED EQUATION BANNER ================= -->
+    <section class="master-equation-section">
+      <div class="container">
+        <div class="equation-banner-card">
+          <div class="equation-eyebrow" data-i18n="eq_eyebrow">🌿 The Master Equation of Life on Earth 🌿</div>
+          <div class="equation-row-flex">
+            <span class="equation-pill">6 CO₂</span>
+            <span class="equation-op">+</span>
+            <span class="equation-pill">6 H₂O</span>
+            <span class="equation-op">+</span>
+            <span class="equation-pill light-energy" data-i18n="eq_light">☀️ Light Energy</span>
+            <span class="equation-op">⟶</span>
+            <span class="equation-pill glucose" data-i18n="eq_glucose">🍬 C₆H₁₂O₆ (Glucose)</span>
+            <span class="equation-op">+</span>
+            <span class="equation-pill">6 O₂ ↑</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRACTICAL APPLICATIONS (3 COLUMNS) ================= -->
+    <section class="applications-section" id="applications">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="section-gold-pill" data-i18n="app_pill">🌍 Real-World Science Impact</span>
+          <h2 data-i18n="app_title">Photosynthesis Across Science &amp; Technology</h2>
+          <p class="subtitle" data-i18n="app_subtitle">From precision agricultural genetics to planetary climate moderation and closed-loop life support for human space exploration.</p>
+        </div>
+
+        <div class="app-cards-grid">
+          <!-- Card 1 -->
+          <div class="application-card">
+            <div class="app-icon-wrapper">🌾</div>
+            <h4 data-i18n="app_c1_title">Agriculture &amp; Crop Engineering</h4>
+            <p data-i18n="app_c1_p">Understanding photosynthetic pathways allows plant geneticists to optimize crop yields to feed a growing global population.</p>
+            <ul class="app-bullet-list" data-i18n="app_c1_list">
+              <li>C4 and CAM pathway engineering in rice and wheat</li>
+              <li>Indoor vertical farming with LED wavelength tuning</li>
+              <li>Greenhouse CO₂ enrichment systems</li>
+              <li>Drought-resistant stomatal conductance breeding</li>
+            </ul>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="application-card">
+            <div class="app-icon-wrapper">🌊</div>
+            <h4 data-i18n="app_c2_title">Planetary Ecology &amp; Carbon Sinks</h4>
+            <p data-i18n="app_c2_p">Photosynthetic organisms form the foundation of Earth's oxygen budget and act as the primary defense against climate change.</p>
+            <ul class="app-bullet-list" data-i18n="app_c2_list">
+              <li>Ocean phytoplankton generating &gt;50% of Earth's oxygen</li>
+              <li>Forest carbon sequestration storing gigatons of CO₂</li>
+              <li>Oceanic biological carbon pump buffering ocean acidification</li>
+              <li>Wetland and mangrove blue carbon restoration</li>
+            </ul>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="application-card">
+            <div class="app-icon-wrapper">🚀</div>
+            <h4 data-i18n="app_c3_title">Synthetic Bio &amp; Space Missions</h4>
+            <p data-i18n="app_c3_p">Engineers mimic photosynthesis to create renewable solar fuels and life-support systems for deep-space colonization.</p>
+            <ul class="app-bullet-list" data-i18n="app_c3_list">
+              <li>Artificial photosynthesis for green hydrogen generation</li>
+              <li>Microalgae photobioreactors for Mars habitats (ECLSS)</li>
+              <li>Continuous O₂ recycling &amp; edible biomass production</li>
+              <li>Bio-solar cells harvesting electrons directly from thylakoids</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= MEDHAVATIKA FOOTER ================= -->
+  <footer class="mv-footer">
+    <div class="container">
+      <div class="footer-grid-layout">
+        <div class="footer-company-info">
+          <div class="mv-brand">
+            <div class="mv-brand-logo">🌿</div>
+            <div class="mv-brand-text">
+              <span class="mv-brand-title" data-i18n="nav_brand_title">MedhāVatika</span>
+              <span class="mv-brand-subtitle" data-i18n="footer_tagline">A Garden of Intellect</span>
+            </div>
+          </div>
+          <p data-i18n="footer_about">MedhaVatika transforms foundational STEM learning through storytelling, gamified simulations, interactive quests, and rigorous curriculum mastery.</p>
+        </div>
+
+        <div class="footer-column">
+          <h5 data-i18n="footer_quests_title">Interactive Quests</h5>
+          <ul class="footer-links-list">
+            <li><a href="#hero" data-i18n="footer_link_photo">Photosynthesis Quest</a></li>
+            <li><a href="https://medhavatika.com/trigonometry-quest/" data-i18n="footer_link_trig">Trigonometry Quest</a></li>
+            <li><a href="#">MedhaLab™ Biology</a></li>
+            <li><a href="#">MedhaLab™ Physics</a></li>
+            <li><a href="#">MedhaLab™ Mathematics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h5 data-i18n="footer_company_title">Company &amp; Policies</h5>
+          <ul class="footer-links-list">
+            <li><a href="#" data-i18n="footer_link_instructor">Become an Instructor</a></li>
+            <li><a href="#" data-i18n="footer_link_terms">Terms &amp; Conditions</a></li>
+            <li><a href="#" data-i18n="footer_link_privacy">Privacy Policy</a></li>
+            <li><a href="#" data-i18n="footer_link_refund">Refund Policy</a></li>
+            <li><a href="#" data-i18n="footer_link_affiliate">Affiliate Program</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column footer-contact-block">
+          <h5 data-i18n="footer_contact_title">Contact MedhaVatika</h5>
+          <p data-i18n="footer_office"><b>🏢 Office:</b> Medhavatika Edlabs Pvt. Ltd.<br>Pune, Maharashtra, India</p>
+          <p data-i18n="footer_phone"><b>📞 Phone:</b> +91 8007614867</p>
+          <p data-i18n="footer_email"><b>✉️ Email:</b> contact@medhavatika.com</p>
+          <div class="footer-social-icons">
+            <a href="#" class="social-btn" title="LinkedIn" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-btn" title="YouTube" aria-label="YouTube">▶</a>
+            <a href="#" class="social-btn" title="Facebook" aria-label="Facebook">f</a>
+            <a href="#" class="social-btn" title="Instagram" aria-label="Instagram">📸</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>Copyright © <span id="year"></span> <span data-i18n="footer_rights">MedhāVatika Edlabs Pvt. Ltd. All rights reserved.</span></span>
+        <span data-i18n="footer_dedication">Designed with 💚 for curious young scientists worldwide</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Scroll-to-Top Button -->
+  <button id="scroll-top-btn" class="btn-scroll-top" title="Scroll to Top" aria-label="Scroll to Top">
+    ↑
+  </button>
+
+  <script src="script.js?v=2.6"></script>
+</body>
+</html>
