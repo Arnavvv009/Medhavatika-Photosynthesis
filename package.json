@@ -1,0 +1,9 @@
+{
+  "name": "medhavatika-photosynthesis",
+  "version": "1.0.0",
+  "description": "Photosynthesis Adventure by MedhaVatika — Interactive Life Science Quest",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve ."
+  }
+}
